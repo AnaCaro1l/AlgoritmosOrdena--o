@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SortLab | Visualizador de Algoritmos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/main.css?v=1" />
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8"
+  >
+    <div
+      class="app-shell max-w-5xl w-full p-5 sm:p-8 rounded-3xl"
+    >
+      <header class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-7">
+        <div>
+          <p class="eyebrow">ALGORITMOS • VISUALIZAÇÃO</p>
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white">
+            Sort<span class="text-cyan-400">Lab</span>
+          </h1>
+          <p class="text-slate-400 mt-2">Veja cada decisão por trás da ordenação.</p>
+        </div>
+        <div id="status-badge" class="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">Novo array</span>
+        </div>
+      </header>
+
+      <div
+        id="array-container"
+        class="array-stage flex items-end justify-center h-72 gap-1 sm:gap-2 p-4 sm:p-6 rounded-2xl mb-5 relative overflow-hidden"
+      >
+        <div class="stage-grid"></div>
+      </div>
+
+      <div class="legend mb-6">
+        <span><i class="legend-swatch swatch-default"></i>Atual</span>
+        <span><i class="legend-swatch swatch-active"></i>Analisando</span>
+        <span><i class="legend-swatch swatch-sorted"></i>Resultado</span>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-center controls">
+        <button
+          onclick="generateNewArray()"
+          class="action-button secondary"
+        >
+          <span>↻</span> Novo array
+        </button>
+        <button
+          onclick="runSorting('bubble-sort')"
+          class="action-button bubble"
+        >
+          Bubble sort
+        </button>
+        <button
+          onclick="runSorting('selection-sort')"
+          class="action-button selection"
+        >
+          Selection sort
+        </button>
+        <button
+          onclick="runSorting('insertion-sort')"
+          class="action-button insertion"
+        >
+          Insertion sort
+        </button>
+        <div id="binary-search-controls" class="hidden flex-wrap gap-3 search-controls">
+          <input
+            id="search-target"
+            type="number"
+            placeholder="Valor alvo"
+            aria-label="Valor alvo da busca"
+            class="search-input"
+          />
+          <button
+            onclick="runBinarySearch()"
+            class="action-button search"
+          >
+            Buscar valor
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/app.js?v=3"></script>
+  </body>
+</html>
